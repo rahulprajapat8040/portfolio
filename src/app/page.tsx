@@ -1,4 +1,3 @@
-"use client";
 import {
   ArrowDown,
   ArrowUpRight,
@@ -6,11 +5,10 @@ import {
   LineChart,
   Mail,
 } from "lucide-react";
-import { useRef } from "react";
 import Link from "next/link";
 import { projects } from "@/lib/projects";
 import Image from "next/image";
-import { useGsapReveal } from "@/hooks/use-gsap-reveal";
+import { PageProvider } from "./page-provider";
 
 const skills = [
   "JavaScript",
@@ -28,14 +26,8 @@ const skills = [
 ];
 
 const Home = () => {
-  const pageRef = useRef<HTMLElement>(null);
-  useGsapReveal(pageRef);
-
   return (
-    <main
-      ref={pageRef}
-      className="overflow-hidden bg-background text-foreground"
-    >
+    <PageProvider>
       <header className="fixed inset-x-0 top-0 z-50 border-b border-grid bg-background/90 backdrop-blur-md">
         <div className="mx-auto flex h-16 max-w-310 items-center justify-between px-5 md:px-8">
           <a
@@ -279,7 +271,7 @@ const Home = () => {
           <span>Software developer · India</span>
         </div>
       </footer>
-    </main>
+    </PageProvider>
   );
 };
 
